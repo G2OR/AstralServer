@@ -25,7 +25,7 @@ ${RC}"
 display_recommendation
 
 # Variables
-DB_VERSION=13
+DB_VERSION=10
 DB_USER='postgres'
 DB_PASS=''
 INSTALL_DIR='/root/hxsy'
