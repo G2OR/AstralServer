@@ -10,7 +10,7 @@ RC='\e[0m'
 # Initial message
 INSTALLER_MSG="${BLUE}
 ==================================================
-             AR Installer Script
+             AK Installer Script
               Developer: Dulgan
 ==================================================${RC}"
 echo -e "$INSTALLER_MSG"
@@ -111,7 +111,7 @@ configure_locales() {
         sudo locale-gen || error_exit "Failed to generate locales."
         
     elif [ "$OS" = 'CentOS' ]; then
-        # For CentOS, ensure glibc-langpack-en is installed for en_US.UTF-8
+        # For CentOS, ensure glibc-langpack-en is installed for zh_TW.UTF-8
         if ! rpm -qa | grep -qw glibc-langpack-en; then
             echo -e "${BLUE}>> Installing 'glibc-langpack-en' package...${RC}"
             sudo yum -q -y install glibc-langpack-en || error_exit "Failed to install 'glibc-langpack-en' package."
@@ -119,12 +119,12 @@ configure_locales() {
             echo -e "${GREEN}>> 'glibc-langpack-en' package is already installed.${RC}"
         fi
         
-        # Check if en_US.UTF-8 locale is generated
+        # Check if zh_TW.UTF-8 locale is generated
         if ! locale -a | grep -qw "en_US.utf8"; then
-            echo -e "${BLUE}>> Generating locale en_US.UTF-8...${RC}"
-            sudo localedef -i en_US -f UTF-8 en_US.UTF-8 || error_exit "Failed to generate en_US.UTF-8 locale."
+            echo -e "${BLUE}>> Generating locale zh_TW.UTF-8...${RC}"
+            sudo localedef -i en_US -f UTF-8 zh_TW.UTF-8 || error_exit "Failed to generate zh_TW.UTF-8 locale."
         else
-            echo -e "${GREEN}>> Locale en_US.UTF-8 is already generated.${RC}"
+            echo -e "${GREEN}>> Locale zh_TW.UTF-8 is already generated.${RC}"
         fi
         
         # Ensure POSIX and C locales are available (they should be by default)
